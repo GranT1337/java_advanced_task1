@@ -15,7 +15,7 @@ public class ThreadEmulatingActivity extends Thread {
 
     @Override
     public void run() {
-        while (myQueue.getCountAdd() < MyQueue.NUMBERS_OF_REQUESTS) {
+        while (!myQueue.getList().isEmpty()) {
             myQueue.get();
             logger.info("Обработка запроса" + "\n");
             try {

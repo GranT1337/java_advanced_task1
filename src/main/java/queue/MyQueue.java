@@ -50,6 +50,7 @@ public class MyQueue {
 
             logger.info("Полученный запрос: " + list.getFirst() + " " + Thread.currentThread().getName() + "\n");
             list.removeFirst();
+            logger.info("Осталось в очереди: " + list.size() + "\n");
             countGet++;
             this.notifyAll();
         }
@@ -62,6 +63,10 @@ public class MyQueue {
 
     public int getCountGet() {
         return countGet;
+    }
+
+    public LinkedList getList() {
+        return list;
     }
 
     @Override
