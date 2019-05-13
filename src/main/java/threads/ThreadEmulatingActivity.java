@@ -21,7 +21,7 @@ public class ThreadEmulatingActivity extends Thread {
             try {
                 sleep(5000);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                logger.error(e);
             }
         }
     }

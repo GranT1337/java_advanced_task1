@@ -22,7 +22,7 @@ public class MyQueue {
                 logger.info("Ожидание, очередь заполнена" + "\n");
                 wait();
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                logger.error(e);
             }
         }
 
@@ -31,9 +31,9 @@ public class MyQueue {
             logger.info("Сгенерирован запрос: " + list.getLast() + " "  + Thread.currentThread().getName()  +
                     " Запрос #" + countAdd + "\n");
             countAdd++;
-        }
+            this.notifyAll();
 
-        this.notifyAll();
+        }
     }
 
 
@@ -44,7 +44,7 @@ public class MyQueue {
                     logger.info("Ожидание, очередь пустая" + "\n");
                     wait();
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    logger.error(e);
                 }
             }
 
@@ -53,7 +53,11 @@ public class MyQueue {
             logger.info("Осталось в очереди: " + list.size() + "\n");
             countGet++;
             this.notifyAll();
+
+        } else {
+            
         }
+
     }
 
 
