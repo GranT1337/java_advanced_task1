@@ -2,25 +2,32 @@ package threads;
 
 import entity.BookingRequests;
 import entity.Hotel;
+import org.apache.log4j.Logger;
 import queue.MyQueue;
 
 import java.time.LocalDate;
 import java.util.Random;
 
-public class ThreadRequestWriter extends Thread{
+public class Producer extends Thread{
+
+    private Logger logger = Logger.getLogger(Producer.class);
 
     private MyQueue myQueue;
     private Random random = new Random();
 
-    public ThreadRequestWriter(MyQueue myQueue) {
+    public Producer(MyQueue myQueue) {
         this.myQueue = myQueue;
     }
 
     @Override
     public void run() {
-        while (myQueue.getCountAdd() < MyQueue.NUMBERS_OF_REQUESTS) {
-            BookingRequests bookingRequests = new BookingRequests(generateHotel(), generateDate());
-            myQueue.add(bookingRequests);
+        try {
+            while (myQueue.getCountAdd() < MyQueue.NUMBERS_OF_REQUESTS) {
+                BookingRequests bookingRequests = new BookingRequests(generateHotel(), generateDate());
+                myQueue.add(bookingRequests);
+            }
+        } catch (Exception e) {
+            logger.error(e);
         }
     }
 

@@ -1,17 +1,24 @@
 import queue.MyQueue;
-import threads.ThreadEmulatingActivity;
-import threads.ThreadRequestWriter;
+import threads.Consumer;
+import threads.Producer;
 
 import java.util.stream.IntStream;
 
 
 public class Main {
 
+    private static int NUMBERS_OF_THREADS_PRODECER = 3;
+    private static int NUMBERS_OF_THREADS_CONSUMER= 6;
+
     public static void main(String[] args) throws InterruptedException {
 
         MyQueue myQueue = new MyQueue();
-        IntStream.range(0,3).forEach(i -> new ThreadRequestWriter(myQueue).start());
+        IntStream.range(0 , NUMBERS_OF_THREADS_PRODECER)
+                .forEach(i -> new Producer(myQueue).start());
+
         Thread.sleep(1000);
-        IntStream.range(0,6).forEach(i -> new ThreadEmulatingActivity(myQueue).start());
+
+        IntStream.range(0 , NUMBERS_OF_THREADS_CONSUMER)
+                .forEach(i -> new Consumer(myQueue).start());
     }
 }

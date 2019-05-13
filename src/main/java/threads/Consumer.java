@@ -3,13 +3,13 @@ package threads;
 import org.apache.log4j.Logger;
 import queue.MyQueue;
 
-public class ThreadEmulatingActivity extends Thread {
+public class Consumer extends Thread {
 
-    private Logger logger = Logger.getLogger(ThreadEmulatingActivity.class);
+    private Logger logger = Logger.getLogger(Consumer.class);
 
     private MyQueue myQueue;
 
-    public ThreadEmulatingActivity(MyQueue myQueue) {
+    public Consumer(MyQueue myQueue) {
         this.myQueue = myQueue;
     }
 
