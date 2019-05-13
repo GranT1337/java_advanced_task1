@@ -5,7 +5,7 @@ import queue.MyQueue;
 
 public class Consumer extends Thread {
 
-    private Logger logger = Logger.getLogger(Consumer.class);
+    private static final Logger logger = Logger.getLogger(Consumer.class);
 
     private MyQueue myQueue;
 
@@ -19,7 +19,7 @@ public class Consumer extends Thread {
             myQueue.get();
             logger.info("Обработка запроса" + "\n");
             try {
-                sleep(5000);
+                sleep(100);
             } catch (InterruptedException e) {
                 logger.error(e);
             }

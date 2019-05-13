@@ -10,7 +10,7 @@ import java.util.Random;
 
 public class Producer extends Thread{
 
-    private Logger logger = Logger.getLogger(Producer.class);
+    private static final Logger logger = Logger.getLogger(Producer.class);
 
     private MyQueue myQueue;
     private Random random = new Random();

@@ -9,7 +9,7 @@ public class MyQueue {
 
     public static final int NUMBERS_OF_REQUESTS = 15;
 
-    private Logger logger = Logger.getLogger(MyQueue.class);
+    private static final Logger logger = Logger.getLogger(MyQueue.class);
 
     private LinkedList list = new LinkedList();
     private int countAdd = 0;

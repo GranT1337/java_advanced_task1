@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 public class Main {
 
     private static int NUMBERS_OF_THREADS_PRODECER = 3;
-    private static int NUMBERS_OF_THREADS_CONSUMER= 6;
+    private static int NUMBERS_OF_THREADS_CONSUMER = 6;
 
     public static void main(String[] args) throws InterruptedException {
 
